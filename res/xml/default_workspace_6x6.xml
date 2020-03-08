@@ -106,7 +106,7 @@
         launcher:screen="1"
         launcher:x="0"
         launcher:y="0"
-        launcher:spanX="5"
+        launcher:spanX="6"
         launcher:spanY="2" />
 
     <resolve
