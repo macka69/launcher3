@@ -246,6 +246,17 @@ public class InvariantDeviceProfile {
         initGrid(context, myInfo, result, false);
     }
 
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
+        switch (key) {
+            case KEY_SHOW_DESKTOP_LABELS:
+            case KEY_SHOW_DRAWER_LABELS:
+            case Utilities.ICON_SIZE:
+                onConfigChanged(mContext);
+                break;
+        }
+    }
+
     public static String getCurrentGridName(Context context) {
         return Utilities.isGridOptionsEnabled(context)
                 ? Utilities.getPrefs(context).getString(KEY_IDP_GRID_NAME, null) : null;
@@ -290,8 +301,9 @@ public class InvariantDeviceProfile {
 
         mExtraAttrs = closestProfile.extraAttrs;
 
-        iconSize = displayOption.iconSize;
-        landscapeIconSize = displayOption.landscapeIconSize;
+        float iconSizeModifier = (float) Utilities.getIconSizeModifier(context) / 100F;
+        iconSize = displayOption.iconSize * iconSizeModifier;
+        landscapeIconSize = displayOption.landscapeIconSize * iconSizeModifier;
         iconBitmapSize = ResourceUtils.pxFromDp(iconSize, metrics);
         iconTextSize = displayOption.iconTextSize;
         landscapeIconTextSize = displayOption.landscapeIconTextSize;
@@ -310,7 +322,7 @@ public class InvariantDeviceProfile {
                 ? closestProfile.numDatabaseAllAppsColumns : closestProfile.numAllAppsColumns;
 
         if (Utilities.isGridOptionsEnabled(context)) {
-            allAppsIconSize = displayOption.allAppsIconSize;
+            allAppsIconSize = displayOption.allAppsIconSize * iconSizeModifier;
             allAppsIconTextSize = displayOption.allAppsIconTextSize;
         } else {
             allAppsIconSize = iconSize;
