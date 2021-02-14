@@ -50,4 +50,6 @@
     <string name="allow_swipe_down_clearall_title">Swipe down</string>
     <string name="allow_swipe_down_clearall_desc">Swipe down to clear all recents in overview</string>
 
+    <!-- Icon size -->
+    <string name="icon_size_title">Size</string>
 </resources>
