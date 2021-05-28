@@ -85,6 +85,7 @@ public class InvariantDeviceProfile implements OnSharedPreferenceChangeListener 
     public static final String KEY_FONT_SIZE = "pref_custom_font_size";
     public static final String KEY_SHOW_DESKTOP_LABELS = "pref_desktop_show_labels";
     public static final String KEY_SHOW_DRAWER_LABELS = "pref_drawer_show_labels";
+    public static final String KEY_MAX_LINES = "pref_max_lines";
 
     // Constants that affects the interpolation curve between statically defined device profile
     // buckets.
@@ -267,6 +268,7 @@ public class InvariantDeviceProfile implements OnSharedPreferenceChangeListener 
             case KEY_SHOW_DRAWER_LABELS:
             case KEY_ICON_SIZE:
             case KEY_FONT_SIZE:
+            case KEY_MAX_LINES:
                 onConfigChanged(mContext);
                 break;
         }
