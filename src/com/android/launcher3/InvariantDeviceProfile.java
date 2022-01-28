@@ -78,6 +78,9 @@ public class InvariantDeviceProfile {
 
     private static final float ICON_SIZE_DEFINED_IN_APP_DP = 48;
 
+    public static final String KEY_ICON_SIZE = "pref_custom_icon_size";
+    public static final String KEY_FONT_SIZE = "pref_custom_font_size";
+
     // Constants that affects the interpolation curve between statically defined device profile
     // buckets.
     private static final float KNEARESTNEIGHBOR = 3;
@@ -251,8 +254,8 @@ public class InvariantDeviceProfile {
         switch (key) {
             case KEY_SHOW_DESKTOP_LABELS:
             case KEY_SHOW_DRAWER_LABELS:
-            case Utilities.ICON_SIZE:
-            case Utilities.FONT_SIZE:
+            case KEY_ICON_SIZE:
+            case KEY_FONT_SIZE:
                 onConfigChanged(mContext);
                 break;
         }
@@ -302,8 +305,10 @@ public class InvariantDeviceProfile {
 
         mExtraAttrs = closestProfile.extraAttrs;
 
-        float iconSizeModifier = (float) Utilities.getIconSizeModifier(context) / 100F;
-        float fontSizeModifier = (float) Utilities.getFontSizeModifier(context) / 100F;
+        float iconSizeModifier =
+                (float) Utilities.getPrefs(context).getInt(KEY_ICON_SIZE, 100) / 100F;
+        float fontSizeModifier =
+                (float) Utilities.getPrefs(context).getInt(KEY_FONT_SIZE, 100) / 100F;
         iconSize = displayOption.iconSize * iconSizeModifier;
         landscapeIconSize = displayOption.landscapeIconSize * iconSizeModifier;
         iconBitmapSize = ResourceUtils.pxFromDp(iconSize, metrics);
