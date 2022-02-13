@@ -85,6 +85,7 @@ public class InvariantDeviceProfile implements OnSharedPreferenceChangeListener 
     public static final String KEY_WORKSPACE_EDIT = "pref_workspace_edit";
     public static final String KEY_ICON_SIZE = "pref_custom_icon_size";
     public static final String KEY_FONT_SIZE = "pref_custom_font_size";
+    public static final String KEY_DRAWER_SYNC_SIZE = "pref_drawer_sync_size";
 
     // Constants that affects the interpolation curve between statically defined device profile
     // buckets.
@@ -267,6 +268,7 @@ public class InvariantDeviceProfile implements OnSharedPreferenceChangeListener 
             case KEY_SHOW_DRAWER_LABELS:
             case KEY_ICON_SIZE:
             case KEY_FONT_SIZE:
+            case KEY_DRAWER_SYNC_SIZE:
                 onConfigChanged(mContext);
                 break;
         }
@@ -337,12 +339,13 @@ public class InvariantDeviceProfile implements OnSharedPreferenceChangeListener 
         numDatabaseAllAppsColumns = isSplitDisplay
                 ? closestProfile.numDatabaseAllAppsColumns : closestProfile.numAllAppsColumns;
 
+        boolean isAppDrawerSynced = Utilities.isDrawerSizeSyncAllowed(context);
         if (Utilities.isGridOptionsEnabled(context)) {
-            allAppsIconSize = displayOption.allAppsIconSize * iconSizeModifier;
-            allAppsIconTextSize = displayOption.allAppsIconTextSize * textSizeModifier;
+            allAppsIconSize = displayOption.allAppsIconSize * (isAppDrawerSynced ? iconSizeModifier : 1F);
+            allAppsIconTextSize = displayOption.allAppsIconTextSize * (isAppDrawerSynced ? textSizeModifier : 1F);
         } else {
-            allAppsIconSize = iconSize;
-            allAppsIconTextSize = iconTextSize;
+            allAppsIconSize = displayOption.allAppsIconSize;
+            allAppsIconTextSize = displayOption.allAppsIconTextSize;
         }
 
         if (devicePaddingId != 0) {
