@@ -52,4 +52,7 @@
 
     <!-- Icon size -->
     <string name="icon_size_title">Size</string>
+
+    <!-- Font size -->
+    <string name="font_size_title">Text size</string>
 </resources>
