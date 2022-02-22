@@ -38,6 +38,8 @@
         android:summary="@string/pref_suggestions_summary">
 
         <intent android:action="android.settings.ACTION_CONTENT_SUGGESTIONS_SETTINGS" />
+        
+    </androidx.preference.PreferenceScreen>
 
     <Preference
         android:key="home_screen"
