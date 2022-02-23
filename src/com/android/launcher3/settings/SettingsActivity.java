@@ -141,7 +141,6 @@ public class SettingsActivity extends CollapsingToolbarBaseActivity
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         switch (key) {
-            case InvariantDeviceProfile.KEY_DT_GESTURE:
             case InvariantDeviceProfile.KEY_DOCK_SEARCH:
             case InvariantDeviceProfile.KEY_DOCK_THEME:
             case InvariantDeviceProfile.KEY_SEARCH_RADIUS:

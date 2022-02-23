@@ -188,7 +188,7 @@
     </style>
 
     <style name="HomeSettingsTheme" parent="@style/Theme.SubSettingsBase">
-        <item name="preferenceFragmentCompatStyle">@style/HomeSettingsFragmentCompatStyle</item>
+        <item name="preferenceFragmentCompatStyle">@style/HomeSettings.FragmentCompatStyle</item>
     </style>
 
     <style name="HomeSettings.FragmentCompatStyle" parent="@style/PreferenceFragment.Material">
